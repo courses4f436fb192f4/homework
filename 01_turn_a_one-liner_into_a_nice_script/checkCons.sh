@@ -15,10 +15,7 @@ NO_COLOR="\033[0m"
 
 
 INPUT_ARG="$1"
-INPUT_CASE="use_netstat"
 TMP_VALUE=""
-PROCESS_STATUS=""
-OPERATION_EXIT_CODE=""
 
 if [ -n "$*" ]
 then
@@ -31,7 +28,7 @@ then
         TMP_VALUE=`netstat -tunapl`
         TMP_VALUE=$(awk "/$INPUT_ARG/ {print \$5}" <<< "$TMP_VALUE")
         TMP_VALUE=$( echo -e "$TMP_VALUE" | uniq -c | sort | tail -n5 | grep -oP '(\d+\.){3}\d+' )
-        echo "$TMP_VALUE"
+        #echo "$TMP_VALUE"
             
         if [ -z "$TMP_VALUE" ]
         then
