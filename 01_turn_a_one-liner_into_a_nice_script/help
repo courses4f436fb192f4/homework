@@ -1,0 +1,19 @@
+SYNOPSIS
+checkCons.sh [PID|part-of-name] 
+
+DESCRIPTION
+This script takes a process name and shows where this servis connected:
+PID or process name -> netstat -> whois.
+To normaly use this script you need to escalate privileges.
+Run script as sudo with input argument which contains
+part of process name or pid.
+
+OPTIONS
+
+help
+    Display a help
+
+BUGS
+Empty line when "organization fiels don't found"
+
+18.02.2021
