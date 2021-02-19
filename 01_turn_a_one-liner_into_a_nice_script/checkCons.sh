@@ -18,7 +18,6 @@ f_check_if_process_exist()
             echo "PID"
             if [ -d "/proc/$INPUT_PROCESS" ]  
             then
-                echo "pid exists"
                 netstat -tunapl | grep $INPUT_PROCESS
                 OPERATION_EXIT_CODE=$?
             else
@@ -26,7 +25,6 @@ f_check_if_process_exist()
                 OPERATION_EXIT_CODE="1"
             fi  
         else
-            echo "PROCESS NAME"
             if pgrep "$INPUT_PROCESS" > /dev/null
             then
                 OPERATION_EXIT_CODE="$?"
@@ -48,11 +46,9 @@ then
     then
         cat "./help"
     else
-
         f_check_if_process_exist
         f_check_if_arg_2_exist
 
-        echo "OPERATION_EXIT_CODE: $OPERATION_EXIT_CODE"
         if [ "$OPERATION_EXIT_CODE" -eq 0 ]
         then
             echo -e  "$WARING_COLOR using netstat $NO_COLOR"
