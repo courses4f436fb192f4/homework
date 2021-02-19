@@ -1,5 +1,5 @@
 ## Geting started
-This script takes a process name and shows where this servis connected:
+This script takes a process name and shows where this application connected:
 PID or process name -> netstat -> whois.
 ## Instalation
 ```sh
@@ -9,32 +9,23 @@ PID or process name -> netstat -> whois.
 ```
 
 ## Requirements
-Linux OS and bash
+Linux OS
+bash
+netstat
+whois
 
 ## Usage
 To normaly use this script you need to escalate privileges.
 Run script as sudo with input argument which contains
-part of process name or pid.
+part of process name or pid. An optional parameter is a filter
+such as "^Organization" which is the default parameter
 
-```text
-                                     |\__/,|    (`\
-                                    =| o o |=    ) )
- __________________________________(((__^(((____(_(___________________________________________
-| O |____xterm____________________________________________________________________| __  []  X |
-|
-|tux@localhost:~$ 
-|tux@localhost:~$ 
-|tux@localhost:~$ chmod +x ./checkCons.sh
-|tux@localhost:~$ ./checkCons.sh help
-|
-|./checkCons.sh [PID|part-of-name]
-|
-|tux@localhost:~$ _
-|
-|
-|
-|
-|
+## Changelog
 
+19.02.2021
+added check for the existence of a process
+added the ability to apply filters
 
-```
+16.02.2021
+creation date
+basic functionality

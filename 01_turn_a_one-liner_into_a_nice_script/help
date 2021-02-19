@@ -1,5 +1,5 @@
 SYNOPSIS
-checkCons.sh [PID|part-of-name] 
+checkCons.sh [PID|part-of-name] [filter]
 
 DESCRIPTION
 This script takes a process name and shows where this servis connected:
@@ -13,7 +13,12 @@ OPTIONS
 help
     Display a help
 
+fileter
+    This is an optional parameter.
+    By default value is "^Organization".
+    You can use your own like a "^OrgAbuseEmail"
+
 BUGS
 Empty line when "organization fiels don't found"
 
-18.02.2021
+19.02.2021
