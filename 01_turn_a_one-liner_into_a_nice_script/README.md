@@ -9,10 +9,10 @@ PID or process name -> netstat -> whois.
 ```
 
 ## Requirements
-Linux OS
-bash
-netstat
-whois
+* Linux OS
+* bash
+* netstat
+* whois
 
 ## Usage
 To normaly use this script you need to escalate privileges.
@@ -23,9 +23,9 @@ such as "^Organization" which is the default parameter
 ## Changelog
 
 19.02.2021
-added check for the existence of a process
-added the ability to apply filters
+* added check for the existence of a process
+* added the ability to apply filters
 
 16.02.2021
-creation date
-basic functionality
+* creation date
+* basic functionality
