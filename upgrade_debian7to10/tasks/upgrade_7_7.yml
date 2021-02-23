@@ -1,0 +1,18 @@
+
+    - name: copy sources.list to host
+      copy:
+        src: files/sources.list
+        dest: /etc/apt/sources.list
+        force: yes
+    
+    - name: update the packages for debian 7
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: upgrade the OS
+      apt:
+        upgrade: dist
+
+    - name: reboot the debian 7 machine
+      reboot:

@@ -1,0 +1,4 @@
+distrib : stretch
+distrib_deb_sec_upds : stretch/updates
+distrib_deb_upds : stretch/updates
+distrib_upds : stretch-updates

@@ -1,0 +1,4 @@
+distrib : buster
+distrib_deb_sec_upds : buster/updates
+distrib_deb_upds : buster/updates
+distrib_upds : buster-updates

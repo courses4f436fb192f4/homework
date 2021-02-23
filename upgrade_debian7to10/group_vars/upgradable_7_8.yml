@@ -1,0 +1,4 @@
+distrib : jessie
+distrib_deb_sec_upds : jessie/updates
+distrib_deb_upds : jessie/updates
+distrib_upds : jessie-updates

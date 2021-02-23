@@ -1,0 +1,11 @@
+[upgradable_7_7]
+deb7.qwe ansible_host=deb7.qwe ansible_port=22
+
+[upgradable_7_8]
+deb7.qwe ansible_host=deb7.qwe ansible_port=22
+
+[upgradable_8_9]
+deb7.qwe ansible_host=deb7.qwe ansible_port=22
+
+[upgradable_9_10]
+deb7.qwe ansible_host=deb7.qwe ansible_port=22

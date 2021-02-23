@@ -1,0 +1,25 @@
+- name: upgrade_7_7
+  hosts: upgradable_7_7
+  tasks:
+    - import_tasks: tasks/upgrade_7_7.yml
+
+- name: upgrade_7_8
+  hosts: upgradable_7_8
+  vars_files:
+    - group_vars/upgradable_7_8.yml
+  tasks:
+    - import_tasks: tasks/upgrade_7_8.yml
+
+- name: upgrade_8_9
+  hosts: upgradable_8_9
+  vars_files:
+    - group_vars/upgradable_8_9.yml
+  tasks:
+    - import_tasks: tasks/upgrade_8_9.yml
+
+- name: upgrade_9_10
+  hosts: upgradable_9_10
+  vars_files:
+    - group_vars/upgradable_9_10.yml
+  tasks:
+    - import_tasks: tasks/upgrade_9_10.yml

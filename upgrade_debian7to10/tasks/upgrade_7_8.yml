@@ -1,0 +1,31 @@
+    - name: update the packages for debian 7
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: upgrade the OS
+      apt:
+        upgrade: dist
+
+    - name: copy sources.list to host
+      template:
+        src: templates/sources.list.j2
+        dest: /etc/apt/sources.list
+        force: yes
+
+    - name: add an apt key for debian 8 repos
+      apt_key:
+        keyserver: "{{ key_server }}"
+        id: AA8E81B4331F7F50
+
+    - name: update the packages for debian 8
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: upgrade the OS
+      apt:
+        upgrade: dist
+
+    - name: reboot the debian 8 machine
+      reboot:

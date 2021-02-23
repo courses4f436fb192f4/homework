@@ -1,0 +1,37 @@
+    - name: update the packages for debian 9
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: upgrade the OS
+      apt:
+        upgrade: dist
+
+    - name: copy sources.list to host
+      template:
+        src: templates/sources.list.j2
+        dest: /etc/apt/sources.list
+        force: yes
+
+    - name: add an apt key for debian 9 repos
+      apt_key:
+        keyserver: "{{ key_server }}"
+        id: 112695A0E562B32A
+
+    - name: add an apt key for debian 9 repos
+      apt_key:
+        keyserver: "{{ key_server }}"
+        id: 648ACFD622F3D138
+
+
+    - name: update the packages for debian 10
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: upgrade the OS
+      apt:
+        upgrade: dist
+
+    - name: reboot the debian 10 machine
+      reboot:
