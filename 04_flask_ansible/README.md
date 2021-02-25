@@ -4,7 +4,10 @@ and return emoji picture with name.
 
 ## Project sructure
 deploy folder - contains ansible playbook
+
 selftest folder - contains script for testing flask application
+
+docker - files for docker
 
 ## Requirements
 ssh whith key login
@@ -23,6 +26,15 @@ Start a playbook:
 ```sh
 ansible-playbook run.yml -K
 ```
+To use docker
+```sh
+docker-compose up -d
+```
+To destroy container
+```sh
+docker-compose down
+```
+
 ## Testing
 For test application run testscript:
 
@@ -31,3 +43,5 @@ chmod u+x ./run.sh
 Run script with hostname as argument:
 
 ./run.sh dt1.qwe
+
+./run.sh dt1.qwe:8080
