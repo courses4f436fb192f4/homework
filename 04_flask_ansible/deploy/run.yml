@@ -1,0 +1,14 @@
+
+- name: deploy app
+  hosts: deploy_app
+  tasks:
+    - import_tasks: tasks/install_software.yml  
+    - import_tasks: tasks/setup_env.yml
+    - import_tasks: tasks/setup_wsgi.yml
+    - import_tasks: tasks/copy_application.yml 
+    - import_tasks: tasks/setup_sshd.yml
+    - import_tasks: tasks/setup_ufw.yml
+
+  handlers:
+    - include: handlers/copy_application.yml
+    - include: handlers/setup_sshd.yml

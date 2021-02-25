@@ -1,0 +1,6 @@
+- name: copy application
+  copy:
+    src: files/flask_app/app.py
+    dest: /srv/fapp/app.py
+  notify:
+    - restart wsgi

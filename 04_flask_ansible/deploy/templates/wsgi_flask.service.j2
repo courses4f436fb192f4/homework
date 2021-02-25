@@ -1,0 +1,17 @@
+[Unit]
+Description=uWSGI service
+After=syslog.target
+
+[Service]
+WorkingDirectory=/srv/fapp
+Environment="PATH=/srv/fapp/bin"
+ExecStart=/srv/fapp/bin/uwsgi --ini wsgi_flask.ini
+
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target 

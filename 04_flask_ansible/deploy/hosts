@@ -1,0 +1,3 @@
+[deploy_app]
+dt1.qwe ansible_host=dt1.qwe ansible_port=22 ansible_become=yes
+

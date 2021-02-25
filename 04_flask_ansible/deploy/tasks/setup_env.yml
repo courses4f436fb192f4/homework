@@ -1,0 +1,12 @@
+- name: create path for virtualenv
+  file:
+    path: /srv/fapp
+    state: directory
+
+- name: installing packages in virtualenv
+  pip:
+    name:
+      - uwsgi
+      - flask
+      - emoji
+    virtualenv: /srv/fapp

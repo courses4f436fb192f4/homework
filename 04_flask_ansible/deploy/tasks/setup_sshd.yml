@@ -1,0 +1,10 @@
+- name: backup sshd config
+  shell: cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
+
+- name: copy sshd config
+  copy:
+    src: files/sshd_config
+    dest: /etc/ssh/sshd_config
+    force: yes
+  notify:
+    - restart sshd

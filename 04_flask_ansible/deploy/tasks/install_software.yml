@@ -1,0 +1,16 @@
+- name: apt update
+  apt:
+    update_cache: yes
+
+- name: installing software with apt
+  apt:
+    pkg:
+      - htop
+      - curl
+      - net-tools
+      - python3-pip
+      - ufw
+
+- name: installing virtualenv
+  pip:
+    name: virtualenv

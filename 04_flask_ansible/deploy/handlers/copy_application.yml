@@ -1,0 +1,4 @@
+- name: restart wsgi
+  service:
+    name: wsgi_flask
+    state: restarted 

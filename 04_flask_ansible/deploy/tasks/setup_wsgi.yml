@@ -1,0 +1,19 @@
+- name: copy systemd unit for wsgi
+  copy:
+    src: files/wsgi_flask.service
+    dest: /etc/systemd/system/wsgi_flask.service
+
+- name: copy config for wsgi_flask
+  copy:
+    src: files/wsgi_flask.ini
+    dest: /srv/fapp/wsgi_flask.ini
+
+- name: service enable wsgi_flask
+  service:
+    name: wsgi_flask.service
+    enabled: yes
+
+- name: service start wsgi_flask
+  service:
+    name: wsgi_flask.service
+    state: started
