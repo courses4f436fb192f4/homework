@@ -38,10 +38,9 @@ docker-compose down
 ## Testing
 For test application run testscript:
 
-chmod u+x ./run.sh
+chmod u+x ./runGET.sh ./runPOST.sh
 
 Run script with hostname as argument:
 
-./run.sh dt1.qwe
-
-./run.sh dt1.qwe:8080
+./runGET.sh dt1.qwe
+./runPOST.sh dt1.qwe
