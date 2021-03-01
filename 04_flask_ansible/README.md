@@ -13,3 +13,9 @@ All folder contain README
 
 ## Requirements
 ssh whith key login
+
+## Using
+
+http://hostname/form
+
+or use selftest scripts

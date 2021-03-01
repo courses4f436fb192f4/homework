@@ -30,5 +30,35 @@ def json_example():
          
          return '''{}\n'''.format(res)
 
-if __name__ == '__main__':
-    app.run()
+@app.route('/form', methods=['GET', 'POST'])
+def form_example():
+    if request.method == 'POST':
+
+        word = request.form.get('list_box')
+        count = request.form.get('count')
+        thumb = emoji.emojize(":" + word + ":")
+        res = ""
+    
+        for x in range(int(count)):
+            res += thumb + word
+
+        return '''<h1>Result is:<p> {}</h1>
+                  <p><a href="/form">Go back</a>'''.format(res)
+
+# else method GET
+    return '''
+           <form method="POST">
+               <div><label>count: <input type="text" name="count"></label></div>
+               <input type="submit" value="Submit">
+               
+               <select Name="list_box" Size="10">  
+                 <option> musical_note </option>  
+                 <option> mountain_cableway </option>  
+                 <option> octopus </option>  
+                 <option> office_building </option>  
+                 <option> Belarus </option>  
+                 <option> snowman </option>  
+                 <option> volcano </option>  
+                 <option> alien </option>  
+               </select>  
+           </form>'''
