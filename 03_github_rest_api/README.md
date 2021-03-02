@@ -13,5 +13,5 @@ The script that checks if there are open pull requests for a repository. An url 
 
 ## Usage
 ```sh
-   ./git_api.sh https://github.com/torvalds/linux
+   ./git_api.sh https://github.com/:user/:repo
 ```

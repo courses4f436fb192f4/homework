@@ -1,24 +1,38 @@
 #! /bin/bash
 
 WARING_COLOR="\033[0;33m"
+ERR_COLOR="\033[0;31m"
 NO_COLOR="\033[0m"
 
 LINK="$1"
-ID=""
-DATA=""
+REPO_ID=""
+ORIGINAL_JSON=""
+LENGHT=""
 
-ID="$( echo $LINK | awk -F "com/" '{ print $2 }' )"
+
+REPO_ID="$( echo $LINK | awk -F "com/" '{ print $2 }' )"
 
 if [ -n "$LINK" ]
 then
-    DATA=`curl -k -X GET https://api.github.com/repos/"$ID"/pulls?state=open`
+    ORIGINAL_JSON=`curl -s -k -X GET https://api.github.com/repos/"$REPO_ID"/contributors`
+    LENGHT=$( echo $ORIGINAL_JSON | jq '.[] | length' )
 
-    DATA=$( echo $DATA | jq '.[] | length' )
-
-    [ -n "$DATA" ] && echo "Repository have open pull requests"
-
-    [ -z "$DATA" ] && echo "Repository haven't open pull requests"
-
+    if [ -n "$LENGHT" ]
+    then
+        echo -e "$WARING_COLOR"; echo -e "Repository: $REPO_ID $NO_COLOR";
+        echo
+        echo "$ORIGINAL_JSON" \
+        | jq -r '.[] | select(.contributions > 1) | .login + " " + (.contributions|tostring)' \
+        | awk 'BEGIN{
+                print "commits  contributor"
+                print "-------  ----------"
+            }
+            {
+                printf " %4s     %s \n", $2, $1
+            }'
+    else
+        echo -e "$WARING_COLOR Repository haven't open pull requests $NO_COLOR"
+    fi
 else
-    echo -e "$WARING_COLOR No args $NO_COLOR"
+    echo -e "$ERR_COLOR No args $NO_COLOR"
 fi
