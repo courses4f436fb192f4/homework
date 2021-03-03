@@ -5,7 +5,7 @@ ERR_COLOR="\033[0;31m"
 NO_COLOR="\033[0m"
 
 INPUT_PROCESS="$1"
-INPUT_FIELD_TO_VIEW=""
+INPUT_FIELD_TO_VIEW="Organization"
 TMP_VALUE=""
 OPERATION_EXIT_CODE=""
 CONN_LINE=""
@@ -15,13 +15,11 @@ f_check_if_process_exist()
 {
     if [ ! -z "${INPUT_PROCESS##*[!0-9]*}" ]
         then
-            echo "PID"
             if [ -d "/proc/$INPUT_PROCESS" ]  
             then
                 netstat -tunapl | grep $INPUT_PROCESS > /dev/null
                 OPERATION_EXIT_CODE=$?
             else
-                echo "doesnt exists"
                 OPERATION_EXIT_CODE="1"
             fi  
         else
@@ -32,14 +30,6 @@ f_check_if_process_exist()
     fi
 }
 
-f_check_if_arg_2_exist()
-{
-    if [ -z "$INPUT_FIELD_TO_VIEW" ]
-    then
-        INPUT_FIELD_TO_VIEW="Organization"
-    fi
-}
-
 if [ -n "$*" ]
 then
     if [ "$1" = "help" ]
@@ -47,7 +37,6 @@ then
         cat "./help"
     else
         f_check_if_process_exist
-        f_check_if_arg_2_exist
 
         if [ "$OPERATION_EXIT_CODE" -eq 0 ]
         then
@@ -70,15 +59,19 @@ then
                 fi
             done <<< "$TMP_VALUE" 
             echo -e "$NO_COLOR"
+
+            while read line
+            do
+                echo "Connections count: $line"
+            done <<< "$( echo -e "$CONN_LINE" | sort | grep "\S" | uniq -c | sed 's/Organization://g' )"
+        
+        elif [ "$OPERATION_EXIT_CODE" -eq 1 ]
+        then
+            echo "Process doesnt exists in connections"            
         else
-            echo -e "$WARING_COLOR Process doesn't have any connections $NO_COLOR"
+            echo -e "$WARING_COLOR \bProcess doesn't have any connections $NO_COLOR"
         fi
     fi
 else
     echo -e "$WARING_COLOR No args $NO_COLOR" 
 fi
-    
-while read line
-do
-    echo "Connections count: $line"
-done <<< "$( echo -e "$CONN_LINE" | sort | uniq -c | sed 's/Organization://g' )"
