@@ -4,7 +4,6 @@ Output show you the difference between MIN and MAX values for the period.
 ## Instalation
 ```sh
    chmod +x finance.sh
-   chmod +x finance2.sh
    chmod +x no_pattern.sh
 ```
 Download the database to folder with script
@@ -19,7 +18,15 @@ curl -s https://yandex.ru/news/quotes/graph_2000.json > ./quotes.json
 * qj
 
 ## Usage
-You can use script finance.sh and finance2.sh without any argumets or
-send to him a month "03". "03" is by default.
+You can use script finance.sh
+
+"-m" show the volatility of the selected month
+
+"-y" show the volatile month in the selected year
+
+```sh
+./finance.sh -m 7
+./finance.sh -y 2017
+```
 
 Script "no_pattern.sh" does the same thing as an example oneline script without any pattern matching
