@@ -14,4 +14,4 @@ Run script with hostname as argument:
 ./runGET.sh dt1.qwe
 ./runPOST.sh dt1.qwe
 
-or use http://hostname/form
+or use http://dt1.qwe/form

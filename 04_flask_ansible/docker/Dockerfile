@@ -1,12 +1,20 @@
-FROM python
-RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
-RUN pip install Flask uWSGI emoji
+FROM alpine
+RUN apk add --no-cache \
+	python3 \
+	python3-dev \
+	py-pip \
+	build-base \
+	linux-headers \
+	&& pip install uwsgi Flask emoji \
+	&& apk del \
+	linux-headers \
+	build-base \
+	py-pip \
+	python3-dev
+
 WORKDIR /flask_app
-COPY flask_app /flask_app
 EXPOSE 8080
-USER uwsgi
 
 CMD [ "uwsgi", "--socket", "0.0.0.0:8080", \
-               "--uid", "uwsgi", \
                "--protocol", "http", \
                "--wsgi", "app:app" ]

@@ -12,4 +12,4 @@ docker-compose down
 ```
 
 ## Testing
-Read the proct README file
+Read the project README file

@@ -9,6 +9,8 @@ selftest folder - contains script for testing flask application
 
 docker - files for docker
 
+flask_app - python3 flask application 
+
 All folder contain README
 
 ## Requirements
@@ -16,6 +18,6 @@ ssh whith key login
 
 ## Using
 
-http://hostname/form
+http://dt1.qwe/form
 
 or use selftest scripts
